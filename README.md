@@ -1,7 +1,6 @@
-````markdown id="r9k2wa"
 # Windows 11 Lock Screen Slideshow Remediation
 
-## 📖 Overview
+## Overview
 
 This project focused on disabling lock screen slideshow functionality on Windows 11 systems to align with DISA STIG compliance requirements.
 
@@ -9,23 +8,26 @@ The remediation process included registry-based hardening, PowerShell automation
 
 ---
 
-# 📌 STIG Information
+## STIG Information
 
-- **STIG ID:** WN10-CC-000010
-- **Category:** Configuration Compliance
-- **Severity:** Medium
-
----
-
-# 🎯 Requirement
-
-Windows systems must prevent lock screen slideshow functionality to reduce unnecessary exposure of system information and improve device security configurations.
+| Category | Details |
+|---|---|
+| STIG ID | WN10-CC-000010 |
+| Severity | Medium |
+| Platform | Windows 11 |
+| Remediation Type | Registry Hardening & PowerShell Automation |
 
 ---
 
-# 🛠️ Manual Remediation Solution
+## Requirement
 
-### 1️⃣ Open Local Group Policy Editor
+Windows systems must prevent lock screen slideshow functionality to reduce unnecessary exposure of system information and improve overall security configuration standards.
+
+---
+
+## Manual Remediation Solution
+
+### Step 1 — Open Local Group Policy Editor
 
 Open:
 
@@ -35,7 +37,7 @@ gpedit.msc
 
 ---
 
-### 2️⃣ Navigate to the Policy Location
+### Step 2 — Navigate to the Policy Location
 
 ```powershell
 Computer Configuration → Administrative Templates → Control Panel → Personalization
@@ -43,9 +45,9 @@ Computer Configuration → Administrative Templates → Control Panel → Person
 
 ---
 
-### 3️⃣ Configure the Policy
+### Step 3 — Configure the Policy
 
-Enable the following setting:
+Enable the following policy:
 
 ```powershell
 Prevent enabling lock screen slide show
@@ -53,13 +55,13 @@ Prevent enabling lock screen slide show
 
 ---
 
-### 4️⃣ Apply Policy Changes
+### Step 4 — Apply Policy Changes
 
 Save and apply the updated policy configuration.
 
 ---
 
-### 5️⃣ Update Group Policy
+### Step 5 — Update Group Policy
 
 Run:
 
@@ -71,15 +73,15 @@ to apply updated policy settings.
 
 ---
 
-### 6️⃣ Validate the Configuration
+### Step 6 — Validate the Configuration
 
-Verify the registry configuration:
+Verify the following registry path:
 
 ```powershell
 HKLM\Software\Policies\Microsoft\Windows\Personalization
 ```
 
-Confirm the following value exists:
+Confirm the following registry value exists:
 
 ```powershell
 NoLockScreenSlideshow = 1
@@ -87,11 +89,11 @@ NoLockScreenSlideshow = 1
 
 ---
 
-# ⚙️ PowerShell Remediation Solution
+## PowerShell Remediation Solution
 
 The PowerShell remediation automated the registry configuration process to disable lock screen slideshow functionality.
 
-## 🔹 PowerShell Actions Performed
+### PowerShell Actions Performed
 
 - Verified registry policy paths
 - Created missing registry keys
@@ -102,7 +104,7 @@ The PowerShell remediation automated the registry configuration process to disab
 
 ---
 
-## 💻 PowerShell Remediation Commands
+### PowerShell Remediation Commands
 
 ```powershell
 $RegPath = "HKLM:\Software\Policies\Microsoft\Windows\Personalization"
@@ -118,7 +120,7 @@ gpupdate /force
 
 ---
 
-# 💻 Technologies Used
+## Technologies Used
 
 - Windows 11
 - PowerShell
@@ -129,7 +131,7 @@ gpupdate /force
 
 ---
 
-# 🚀 Skills Demonstrated
+## Skills Demonstrated
 
 - Windows security hardening
 - Registry-based remediation
@@ -138,5 +140,3 @@ gpupdate /force
 - Vulnerability remediation
 - Endpoint security configuration
 - Security documentation
-````
-
